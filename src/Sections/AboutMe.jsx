@@ -14,7 +14,7 @@ function AboutMe() {
 >
   <div className="w-full xl:w-3/4 p-4 sm:p-6 md:p-12">
     <motion.h2
-      className="text-3xl sm:text-4xl md:text-5xl font-motley mt-6 sm:mt-8 mb-5 sm:mb-7 flex items-center gap-3 text-black dark:text-white"
+      className="text-3xl sm:text-4xl md:text-5xl font-motley mb-5 sm:mb-7 flex items-center gap-3 text-black dark:text-white"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.5 }}
