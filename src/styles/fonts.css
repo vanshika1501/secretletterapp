@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'Momentra';
+    src: url('../assets/fonts/TheMomentra.woff2') format('woff2'),
+        url('../assets/fonts/TheMomentra.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+ 
+}
+
+@font-face {
+    font-family: 'ShiftyNotes';
+    src: url('../assets/fonts/ShiftyNotes-Regular.woff2') format('woff2'),
+        url('../assets/fonts/ShiftyNotes-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'MotleyForces';
+    src: url('../assets/fonts/MotleyForces-Regular.woff2') format('woff2'),
+        url('../assets/fonts/MotleyForces-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
