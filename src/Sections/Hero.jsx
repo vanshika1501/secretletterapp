@@ -35,7 +35,7 @@ function HeroSection() {
   };
 
   return (
-    <section className="flex flex-col md:flex-row justify-between mx-auto max-w-[1248px] pt-24 md:pt-24 px-6 md:px-8">
+    <section className="flex flex-col md:flex-row justify-between mx-auto max-w-[1248px] pt-24 md:pt-24 px-6 md:px-8 rain-overlay">
       {/* Left Text Section */}
       <motion.div
         initial={{ opacity: 0, y: 75 }}
@@ -43,7 +43,7 @@ function HeroSection() {
         transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
         className="max-w-xl"
       >
-        <p className="text-3xl text-description font-shifty md:text-lg lg:text-3xl">
+        <p className="text-3xl text-description dark:text-slate-100 font-shifty md:text-lg lg:text-3xl">
           Hey There! I'm
         </p>
         <h1 className="text-4xl md:text-6xl font-shifty my-5 md:leading-[75px]">
@@ -65,7 +65,7 @@ function HeroSection() {
             style={{ display: "inline-block" }}
           />
         </h1>
-        <p className="text-description font-shifty text-3xl mb-9 md:text-lg lg:text-3xl">
+        <p className="text-description dark:text-slate-300 font-shifty text-3xl mb-9 md:text-lg lg:text-3xl">
           crafting secure, scalable applications and exploring the power of AI
           to build smarter tech for tomorrow.
         </p>

@@ -13,18 +13,18 @@ import MusicToggleButton from "./Components/MusicToggleButton";
 function App() {
   return (
     <>
-  <div className="min-h-screen overflow-x-hidden dark:bg-black">
-    <ThemeToggleButton/>
-    <MusicToggleButton/>
-      <Navbar />
-      <HeroSection />
-      <Timeline />
-      <TechStack/>
-      <WhatIDo />
-      <FeaturedProjects />
-      <Quote />
-      <AboutMe />
-      <Map />
+      <div className="min-h-screen overflow-x-hidden dark:bg-[#18181b]">
+        <ThemeToggleButton/>
+        <MusicToggleButton/>
+        <Navbar />
+        <HeroSection />
+        <Timeline />
+        <TechStack/>
+        <WhatIDo />
+        <FeaturedProjects />
+        <Quote />
+        <AboutMe />
+        <Map />
       </div>
     </>
   );
