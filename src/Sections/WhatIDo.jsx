@@ -12,10 +12,11 @@ function WhatIDo() {
       name: "Generative AI",
       image: "/images/c1.jpg",
     },
-    { name:"AI Hackathon",
+    {
+      name: "AI Hackathon",
       image: "/images/c3.jpg"
     }
-   
+
     // Add more here easily
   ];
   const [isOpen, setIsOpen] = useState(false);
@@ -24,15 +25,15 @@ function WhatIDo() {
   const openModal = (certificate) => {
     setCurrentCertificate(certificate);
     setIsOpen(true);
-      new Audio(closeSound).play(); // ✅ Play sound on close
-        onClose();
+    new Audio(closeSound).play(); // ✅ Play sound on close
+    onClose();
   };
 
   const closeModal = () => {
     setIsOpen(false);
     setCurrentCertificate(null);
-        new Audio(closeSound).play(); // ✅ Play sound on close
-        onClose();
+    new Audio(closeSound).play(); // ✅ Play sound on close
+    onClose();
 
   };
 
@@ -144,18 +145,31 @@ function WhatIDo() {
               </div>
             </div>
 
-           <div className="flex flex-col space-y-3 max-h-24 overflow-y-scroll scrollbar scrollbar-thumb-[#c8a2c8] scrollbar-track-[#f3e9f7] pr-2">
+       <div className="relative max-h-24 overflow-y-auto pr-2 group scrollbar-thin scrollbar-thumb-[#c8a2c8] scrollbar-track-[#f8ecfc] scrollbar-rounded-full md:scrollbar">
+  <div
+    className="flex flex-col space-y-3"
+    style={{
+      WebkitOverflowScrolling: "touch",
+      scrollbarWidth: "thin",
+    }}
+  >
+    {certificates.map((cert, index) => (
+      <button
+        key={index}
+        onClick={() => openModal(cert)}
+        className="bg-white border border-purple-400 rounded-lg px-4 py-2 text-purple-700 font-semibold hover:bg-purple-50 text-left"
+      >
+        {cert.name}
+      </button>
+    ))}
+  </div>
 
-              {certificates.map((cert, index) => (
-                <button
-                  key={index}
-                  onClick={() => openModal(cert)}
-                  className="bg-white border border-purple-400 rounded-lg px-4 py-2 text-purple-700 font-semibold hover:bg-purple-50 text-left"
-                >
-                  {cert.name}
-                </button>
-              ))}
-            </div>
+  {/* ↓ Cute Purple Arrow Scroll Cue for Mobile */}
+  <div className="absolute bottom-1 right-2 animate-bounce text-[#c8a2c8] text-sm pointer-events-none select-none block md:hidden">
+    ↓
+  </div>
+</div>
+
 
 
 

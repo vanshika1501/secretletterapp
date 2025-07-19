@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 export const Map = () => {
   return (
-    <div className="bg-animepurple dark:bg-black px-6 py-10 flex flex-col gap-10 text-white">
+    <div className="bg-animepurple dark:bg-[#18181b] px-6 py-10 flex flex-col gap-10 text-white">
 
       {/* Map + Form Section */}
       <div className="flex flex-col md:flex-row gap-8 items-stretch">

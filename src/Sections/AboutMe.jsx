@@ -9,12 +9,12 @@ const startedPentesting = new Date('2022-06-01'); // Started pentesting
 function AboutMe() {
     return (
         <section
-  className="flex flex-col xl:flex-row dark:bg-black bg-animepurple rounded-2xl scroll-smooth scroll-mt-8 w-full h-full px-4 sm:px-6 md:px-10 py-10"
+  className="flex flex-col xl:flex-row dark:bg-[#18181b] bg-animepurple  scroll-smooth scroll-mt-8 w-full h-full px-4 sm:px-6 md:px-10 py-10"
   id="aboutme"
 >
   <div className="w-full xl:w-3/4 p-4 sm:p-6 md:p-12">
     <motion.h2
-      className="text-2xl sm:text-3xl md:text-4xl lg: font-motley mb-5 sm:mb-7 flex items-center gap-3 text-black dark:text-purple2"
+      className="text-3xl sm:text-3xl md:text-4xl font-motley mb-5 sm:mb-7 flex items-center gap-3 text-black dark:text-purple2"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.5 }}
@@ -72,7 +72,7 @@ But like a good recursive function, I just kept wanting to go deeper. I found my
                     </motion.p>
                 </div>
             </div>
-            <div className="w-full rounded-2xl xl:w-3/5 bg-[url(/illustrations/m1.jpg)] dark:bg-[url(/illustrations/t1.jpg)] bg-cover bg-center bg-[#d8cded] bg-no-repeat min-h-[48vw] sm:min-h-[400px] xl:min-h-[500px] max-h-[350px] sm:max-h-none" />
+            <div className="w-full rounded-2xl xl:w-3/5 bg-[url(/illustrations/m1.jpg)] dark:bg-[url(/illustrations/t1.jpg)] bg-cover bg-center bg-[#d8cded] bg-no-repeat min-h-[500px] xl:min-h-[500px]" />
         </section>
     );
 }
