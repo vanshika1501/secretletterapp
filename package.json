@@ -10,7 +10,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
-  "author": "0xBitBuster",
+  "author": "vanshika-sharma",
   "dependencies": {
     "@tsparticles/preset-stars": "^3.2.0",
     "framer-motion": "^11.18.2",

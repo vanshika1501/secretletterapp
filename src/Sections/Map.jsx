@@ -32,7 +32,7 @@ export const Map = () => {
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
             {/* Avatar */}
             <img
-              src="/images/ava.png"
+              src="/illustrations/x-modified.png"
               alt="Avatar"
               className="w-16 h-16 rounded-full border-4 border-white"
             />

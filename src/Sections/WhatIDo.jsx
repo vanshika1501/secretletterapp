@@ -144,7 +144,8 @@ function WhatIDo() {
               </div>
             </div>
 
-            <div className="flex flex-col space-y-3 max-h-24 overflow-y-auto scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-transparent pr-2">
+           <div className="flex flex-col space-y-3 max-h-24 overflow-y-scroll scrollbar scrollbar-thumb-[#c8a2c8] scrollbar-track-[#f3e9f7] pr-2">
+
               {certificates.map((cert, index) => (
                 <button
                   key={index}

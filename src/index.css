@@ -1,5 +1,5 @@
 @tailwind base;
-@import 'tailwind-scrollbar'; /* ✅ Move this up */
+@import 'tailwind-scrollbar'; 
 @tailwind components;
 @tailwind utilities;
 
@@ -15,12 +15,12 @@ body
 img {
   pointer-events: none;
 }
-
 ::-moz-selection {
-  background: #cdb3d6;
+  background: rgba(205, 179, 214, 0.4);
 }
+
 ::selection {
-  background: #cdb3d6;
+  background: rgba(205, 179, 214, 0.4);
 }
 
 @keyframes twinkle {
@@ -46,6 +46,10 @@ img {
 }
 .custom-purple-gradient {
   background: linear-gradient(to bottom left, #9784c8, #f0dcf5); /* deep to light purple */
+}
+
+.custom-purple-gradient2 {
+  background: linear-gradient(to bottom, #F7CFD8, #ffebfd); /* deep to light purple */
 }
 .animate-meteor {
   animation: meteor 8s linear infinite;

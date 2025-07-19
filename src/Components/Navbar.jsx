@@ -25,7 +25,7 @@ useEffect(() => {
   <a href="#">
     <img
       src="/logo2.png"
-      alt="BitBuster"
+      alt="Vanshika Sharma"
       className="w-[180px] sm:w-[180px] md:w-[200px] lg:w-[220px] hover:opacity-90 transition-opacity duration-300"
     />
   </a>
