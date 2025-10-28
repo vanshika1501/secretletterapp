@@ -44,13 +44,3 @@ img {
     opacity: 0;
   }
 }
-.custom-purple-gradient {
-  background: linear-gradient(to bottom left, #9784c8, #f0dcf5); /* deep to light purple */
-}
-
-.custom-purple-gradient2 {
-  background: linear-gradient(to bottom, #F7CFD8, #ffebfd); /* deep to light purple */
-}
-.animate-meteor {
-  animation: meteor 8s linear infinite;
-}
