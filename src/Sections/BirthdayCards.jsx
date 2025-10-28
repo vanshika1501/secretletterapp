@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaCross, FaTimes } from "react-icons/fa";
+import { FaTimes, FaDownload } from "react-icons/fa";
 
 export default function BirthdaySecrets() {
   const [unlockedFriend, setUnlockedFriend] = useState(null);
@@ -55,6 +55,16 @@ export default function BirthdaySecrets() {
     }
   };
 
+  // 🖼️ Download image function
+  const handleDownload = (imageSrc) => {
+    const link = document.createElement("a");
+    link.href = imageSrc;
+    link.download = imageSrc.split("/").pop(); // file name
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center bg-[#f9f5f0] overflow-hidden p-4 sm:p-6">
       {/* 🌿 Boho Blobs */}
@@ -86,7 +96,7 @@ export default function BirthdaySecrets() {
       />
 
       {/* 🎂 Title */}
-      <h2 className="text-3xl sm:text-5xl font-shifty ml-4  text-[#705c53] mb-2 tracking-wide text-center z-10">
+      <h2 className="text-3xl sm:text-5xl font-shifty ml-4 text-[#705c53] mb-2 tracking-wide text-center z-10">
         Happy Birthday Rishika
       </h2>
       <h4 className="text-base sm:text-xl font-shifty ml-4 mb-8 tracking-wide text-center z-10 px-2">
@@ -142,15 +152,25 @@ export default function BirthdaySecrets() {
               >
                 <FaTimes />
               </button>
+
               <h2 className="text-xl sm:text-4xl font-bold text-[#b4846c] mb-4 sm:mb-6 font-serif text-center">
                 {unlockedFriend.title}
               </h2>
+
               <img
                 src={unlockedFriend.image}
                 alt="Letter"
                 className="rounded-xl mb-4 sm:mb-6 max-w-full max-h-[70vh] sm:max-h-[80vh] object-contain shadow-lg border border-[#e5d2c2]"
               />
-              
+
+              {/* ⬇️ Download Button */}
+              <button
+                onClick={() => handleDownload(unlockedFriend.image)}
+                className="flex items-center gap-2 bg-[#d8a48f] text-white px-5 py-2 rounded-lg hover:bg-[#c58d78] transition font-medium"
+              >
+                <FaDownload />
+                Download Letter
+              </button>
             </motion.div>
           </motion.div>
         )}
