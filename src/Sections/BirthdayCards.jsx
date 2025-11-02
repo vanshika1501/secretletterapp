@@ -28,7 +28,7 @@ export default function BirthdaySecrets() {
     { id: 5, name: "Chhoti thi height, badi thi baat, Wahi se shuru hui dosti ki shuruaat♥️ Bata kis class?", password: "5", group: "group1" },
     { id: 6, name: "For Khushi 💫", password: "alpha", group: "group1" },
 
-    { id: 7, name: "Himanshu bhaiya", password: "beta", group: "group2" },
+    { id: 7, name: "In a yellow dress you look like?", password: "butterfly", group: "group2" },
     { id: 8, name: "Himalaya bhaiya", password: "gamma", group: "group2" },
     { id: 9, name: "Jeeju bhaiya", password: "delta", group: "group2" },
     { id: 10, name: "Shivam bhaiya", password: "epsilon", group: "group2" },
@@ -48,7 +48,7 @@ export default function BirthdaySecrets() {
     "ande": { title: "From Samina!", image: "/images/samina.pdf" },
     "dainikbhaskarmall": { title: "From Jaya!", image: "/images/jaya.png" },
     "5": { title: "From Sneha!", image: "/images/sneha.jpg" },
-    "alpha": { title: "From Khushi!", image: "/images/group2-a.jpg" },
+    "butterfly": { title: "From Himanshu!", image: "/images/himanshu.png" },
     "beta": { title: "From Riya!", image: "/images/group2-b.jpg" },
     "gamma": { title: "From Megha!", image: "/images/group2-c.pdf" },
     "delta": { title: "From Priya!", image: "/images/group2-d.jpg" },
