@@ -17,7 +17,7 @@ export default function BirthdaySecrets() {
     { id: 2, name: "Reshu didi bht achi hai, vo mjhe ____ se khelne detin hain", password: "bholu" },
     { id: 3, name: "Reshu tum mera kaunsa gaya hua gaana loop pe sunti ho? (Samina)", password: "ande" },
     { id: 4, name: "I am the repetitive meeting place that always makes you grin, And the one place I hate where you constantly drag me in..Where am I?(Jaya)", password: "dainikbhaskarmall" },
-    { id: 5, name: "Riddle 5", password: "test" },
+    { id: 5, name: "Chhoti thi height, badi thi baat, Wahi se shuru hui dosti ki shuruaat♥️Bata kis class (Sneha)?", password: "5" },
     { id: 6, name: "Riddle 6", password: "test" },
     { id: 7, name: "Riddle 7", password: "test" },
     { id: 8, name: "Riddle 8", password: "test" },
@@ -46,6 +46,10 @@ export default function BirthdaySecrets() {
     dainikbhaskarmall: {
       title: "From Jaya!",
       image: "/images/jaya.png",
+    },
+    5: {
+      title: "From Sneha!",
+      image: "/images/sneha.jpg",
     },
   };
 
