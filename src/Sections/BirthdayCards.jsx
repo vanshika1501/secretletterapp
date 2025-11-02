@@ -1,8 +1,7 @@
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css'; import React, { useState } from "react";
-
+import { FaTimes, FaDownload, FaEye, FaEyeSlash } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaTimes, FaDownload } from "react-icons/fa";
 import { Worker, Viewer } from '@react-pdf-viewer/core';
 
 
@@ -10,12 +9,14 @@ import { Worker, Viewer } from '@react-pdf-viewer/core';
 export default function BirthdaySecrets() {
   const [unlockedFriend, setUnlockedFriend] = useState(null);
   const [enteredPasswords, setEnteredPasswords] = useState({});
+  const [showPassword, setShowPassword] = useState({});
+
 
   const friends = [
     { id: 1, name: "Starts with 8, ends with 9, opens the door to the new world where we have siblings to find.", password: "816274169" },
     { id: 2, name: "Reshu didi bht achi hai, vo mjhe ____ se khelne detin hain", password: "bholu" },
-    { id: 3, name: "Riddle 3", password: "test" },
-    { id: 4, name: "Riddle 4", password: "test" },
+    { id: 3, name: "Reshu tum mera kaunsa gaya hua gaana loop pe sunti ho? (Samina)", password: "ande" },
+    { id: 4, name: "I am the repetitive meeting place that always makes you grin, And the one place I hate where you constantly drag me in..Where am I?(Jaya)", password: "dainikbhaskarmall" },
     { id: 5, name: "Riddle 5", password: "test" },
     { id: 6, name: "Riddle 6", password: "test" },
     { id: 7, name: "Riddle 7", password: "test" },
@@ -36,11 +37,15 @@ export default function BirthdaySecrets() {
     },
     bholu: {
       title: "From Dishu!",
-      image: "/images/friend1.jpg",
+      image: "/images/dishu.pdf",
     },
-    test: {
-      title: "🌷 Hidden Wish!",
-      image: "/images/friend3.jpg",
+     ande: {
+      title: "From Samina!",
+      image: "/images/samina.pdf",
+    },
+    dainikbhaskarmall: {
+      title: "From Jaya!",
+      image: "/images/jaya.png",
     },
   };
 
@@ -119,13 +124,25 @@ export default function BirthdaySecrets() {
             <h2 className="text-md sm:text-lg font-semibold mb-3 text-[#7a6563] font-serif">
               {friend.name}
             </h2>
-            <input
-              type="password"
-              placeholder="Enter password"
-              className="border border-[#d6c2b5] bg-[#fcf9f4] rounded-lg p-2 w-full text-center focus:outline-none focus:ring-2 focus:ring-[#d8a48f]"
-              value={enteredPasswords[friend.id] || ""}
-              onChange={(e) => handleChange(friend.id, e.target.value)}
-            />
+            <div className="relative">
+  <input
+    type={showPassword[friend.id] ? "text" : "password"}
+    placeholder="Enter password"
+    className="border border-[#d6c2b5] bg-[#fcf9f4] rounded-lg p-2 w-full text-center focus:outline-none focus:ring-2 focus:ring-[#d8a48f]"
+    value={enteredPasswords[friend.id] || ""}
+    onChange={(e) => handleChange(friend.id, e.target.value)}
+  />
+  <button
+    type="button"
+    onClick={() =>
+      setShowPassword((prev) => ({ ...prev, [friend.id]: !prev[friend.id] }))
+    }
+    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#b4846c] hover:text-[#8b6c5c]"
+  >
+    {showPassword[friend.id] ? <FaEyeSlash /> : <FaEye />}
+  </button>
+</div>
+
             <button
               onClick={() => handleUnlock(friend.id)}
               className="mt-4 bg-[#d8a48f] text-white rounded-lg px-5 py-2 hover:bg-[#c58d78] transition font-medium"
