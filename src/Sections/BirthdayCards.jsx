@@ -19,15 +19,11 @@ export default function BirthdaySecrets() {
     { id: 4, name: "I am the repetitive meeting place that always makes you grin, And the one place I hate where you constantly drag me in..Where am I?", password: "dainikbhaskarmall" },
     { id: 5, name: "Chhoti thi height, badi thi baat, Wahi se shuru hui dosti ki shuruaat♥️Bata kis class?", password: "5" },
     { id: 6, name: "In a yellow dress you look like?", password: "butterfly" },
-    { id: 7, name: "Riddle 7", password: "test" },
-    { id: 8, name: "Riddle 8", password: "test" },
-    { id: 9, name: "Riddle 9", password: "test" },
-    { id: 10, name: "Riddle 10", password: "test" },
-    { id: 11, name: "Riddle 11", password: "test" },
-    { id: 12, name: "Riddle 12", password: "test" },
-    { id: 13, name: "Riddle 13", password: "test" },
-    { id: 14, name: "Riddle 14", password: "test" },
-    { id: 15, name: "Riddle 15", password: "test" },
+    { id: 7, name: "The game where we met for the first time ", password: "avakin" },
+    { id: 8, name: "I was your school friend..Guess my name?", password: "paras" },
+    { id: 9, name: "Khushi", password: "test" },
+    { id: 10, name: "Shivam", password: "test" },
+    { id: 11, name: "Jeeju bhaiya", password: "test" },
   ];
 
   const messages = {
@@ -39,7 +35,7 @@ export default function BirthdaySecrets() {
       title: "From Dishu!",
       image: "/images/dishu.pdf",
     },
-     ande: {
+    ande: {
       title: "From Samina!",
       image: "/images/samina.pdf",
     },
@@ -54,6 +50,14 @@ export default function BirthdaySecrets() {
     butterfly: {
       title: "From Himanshu!",
       image: "/images/himanshu.png",
+    },
+    avakin: {
+      title: "From Himalaya!",
+      image: "/images/himalaya.pdf",
+    },
+    paras: {
+      title: "From Paras!",
+      image: "/images/paras.jpg",
     },
   };
 
