@@ -37,7 +37,7 @@ export default function BirthdaySecrets() {
     },
     bholu: {
       title: "From Dishu!",
-      image: "/images/friend1.jpg",
+      image: "/images/dishu.pdf",
     },
      ande: {
       title: "From Samina!",
