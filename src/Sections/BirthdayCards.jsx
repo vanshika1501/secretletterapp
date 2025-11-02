@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import '@react-pdf-viewer/core/lib/styles/index.css';
+import '@react-pdf-viewer/default-layout/lib/styles/index.css'; import React, { useState } from "react";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { FaTimes, FaDownload } from "react-icons/fa";
+import { Worker, Viewer } from '@react-pdf-viewer/core';
+
+
 
 export default function BirthdaySecrets() {
   const [unlockedFriend, setUnlockedFriend] = useState(null);
   const [enteredPasswords, setEnteredPasswords] = useState({});
 
   const friends = [
-    { id: 1, name: "Test Riddle: Rishika was born in the year", password: "2000" },
+    { id: 1, name: "Starts with 8, ends with 9, opens the door to the new world where we have siblings to find.", password: "816274169" },
     { id: 2, name: "Reshu didi bht achi hai, vo mjhe ____ se khelne detin hain", password: "bholu" },
     { id: 3, name: "Riddle 3", password: "test" },
     { id: 4, name: "Riddle 4", password: "test" },
@@ -25,9 +30,9 @@ export default function BirthdaySecrets() {
   ];
 
   const messages = {
-    2000: {
-      title: "From Test User!",
-      image: "/images/test.png",
+    816274169: {
+      title: "From Stuti!",
+      image: "/images/stuti.pdf",
     },
     bholu: {
       title: "From Dishu!",
@@ -153,20 +158,29 @@ export default function BirthdaySecrets() {
                 <FaTimes />
               </button>
 
-              <h2 className="text-xl sm:text-4xl font-bold text-[#b4846c] mb-4 sm:mb-6 font-serif text-center">
+              <h2 className="text-xl sm:text-4xl font-bold  text-[#b4846c] mb-4 sm:mb-6 font-serif text-center">
                 {unlockedFriend.title}
               </h2>
 
-              <img
-                src={unlockedFriend.image}
-                alt="Letter"
-                className="rounded-xl mb-4 sm:mb-6 max-w-full max-h-[70vh] sm:max-h-[80vh] object-contain shadow-lg border border-[#e5d2c2]"
-              />
+              {unlockedFriend.image.endsWith(".pdf") ? (
+                <div className="w-full h-[70vh] sm:h-[80vh] rounded-xl border border-[#e5d2c2] overflow-hidden">
+                  <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
+                    <Viewer fileUrl={unlockedFriend.image} />
+                  </Worker>
+                </div>
+              ) : (
+                <img
+                  src={unlockedFriend.image}
+                  alt="Letter"
+                  className="rounded-xl mb-4 sm:mb-6 max-w-full max-h-[70vh] sm:max-h-[80vh] object-contain shadow-lg border border-[#e5d2c2]"
+                />
+              )}
+
 
               {/* ⬇️ Download Button */}
               <button
                 onClick={() => handleDownload(unlockedFriend.image)}
-                className="flex items-center gap-2 bg-[#d8a48f] text-white px-5 py-2 rounded-lg hover:bg-[#c58d78] transition font-medium"
+                className="flex items-center mt-2 gap-2 bg-[#d8a48f] text-white px-5 py-2 rounded-lg hover:bg-[#c58d78] transition font-medium"
               >
                 <FaDownload />
                 Download Letter
