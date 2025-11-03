@@ -21,7 +21,7 @@ export default function BirthdaySecrets() {
     { id: 7, name: "The game where we met for the first time", password: "avakin" },
     { id: 8, name: "I was your school friend..Guess my name?", password: "paras" },
     { id: 9, name: "In a yellow dress you look like?", password: "butterfly" },
-    { id: 10, name: "I start with an alphabet, add a place where animals live too,mix logic and love, and you will get who?", password: "gzoo" },
+    { id: 10, name: "I start with an alphabet, add a place where animals live too,mix logic and love, and you will get who + len(age_diff(you,khushi)?", password: "gzoo6" },
   ];
 
   const messages = {
