@@ -34,7 +34,7 @@ export default function BirthdaySecrets() {
     avakin: { title: "From Himalaya!", image: "/images/himalaya.jpg" },
     paras: { title: "From Paras!", image: "/images/paras.jpg" },
     rishika: { title: "From Shreya!", image: "/images/shreya.mp4" },
-    gzoo: { title: "From Shikhar!", image: "/images/shikhar.pdf" },
+    gzoo6: { title: "From Shikhar!", image: "/images/shikhar.pdf" },
   };
 
   // --- side-effect: lock body scroll when modal open (prevent background scrollbar) ---
