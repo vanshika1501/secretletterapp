@@ -29,7 +29,7 @@ export default function BirthdaySecrets() {
     bholu: { title: "From Dishu!", image: "/images/dishu.pdf" },
     ande: { title: "From Samina!", image: "/images/samina.pdf" },
     dainikbhaskarmall: { title: "From Jaya!", image: "/images/jaya.png" },
-    5: { title: "From Sneha!", image: "/images/sneha_u.jpg" },
+    5: { title: "From Sneha!", image: "/images/sneha_u.jpeg" },
     butterfly: { title: "From Himanshu!", image: "/images/himanshu.png" },
     avakin: { title: "From Himalaya!", image: "/images/himalaya.jpg" },
     paras: { title: "From Paras!", image: "/images/paras.jpg" },
