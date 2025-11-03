@@ -1,6 +1,6 @@
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaTimes, FaDownload, FaEye, FaEyeSlash } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { Worker, Viewer } from '@react-pdf-viewer/core';
@@ -10,6 +10,7 @@ export default function BirthdaySecrets() {
   const [enteredPasswords, setEnteredPasswords] = useState({});
   const [showPassword, setShowPassword] = useState({});
 
+  // --- data ---
   const friends = [
     { id: 1, name: "Starts with 8, ends with 9, opens the door to the new world where we have siblings to find.", password: "816274169" },
     { id: 2, name: "Reshu didi bht achi hai, vo mjhe ____ se khelne detin hain", password: "bholu" },
@@ -20,7 +21,7 @@ export default function BirthdaySecrets() {
     { id: 7, name: "The game where we met for the first time", password: "avakin" },
     { id: 8, name: "I was your school friend..Guess my name?", password: "paras" },
     { id: 9, name: "In a yellow dress you look like?", password: "butterfly" },
-    { id: 10, name: "pwd = len(your_spirit_animal) + age_diff(Dishu,Khushi)", password: "11" },
+    { id: 10, name: "I start with an alphabet, add a place where animals live too,mix logic and love, and you will get who?)", password: "gzoo" },
   ];
 
   const messages = {
@@ -33,18 +34,37 @@ export default function BirthdaySecrets() {
     avakin: { title: "From Himalaya!", image: "/images/himalaya.jpg" },
     paras: { title: "From Paras!", image: "/images/paras.jpg" },
     rishika: { title: "From Shreya!", image: "/images/shreya.mp4" },
-    11: { title: "From Shikhar!", image: "/images/shikhar.pdf" },
+    gzoo: { title: "From Shikhar!", image: "/images/shikhar.pdf" },
   };
 
+  // --- side-effect: lock body scroll when modal open (prevent background scrollbar) ---
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    if (unlockedFriend) {
+      document.body.style.overflow = "hidden";
+      // prevent horizontal overflow too
+      document.documentElement.style.overflowX = "hidden";
+    } else {
+      document.body.style.overflow = prev || "auto";
+      document.documentElement.style.overflowX = "hidden";
+    }
+    return () => {
+      // restore when component unmounts
+      document.body.style.overflow = prev || "auto";
+      document.documentElement.style.overflowX = "hidden";
+    };
+  }, [unlockedFriend]);
+
+  // --- handlers ---
   const handleChange = (id, value) => {
     setEnteredPasswords((prev) => ({ ...prev, [id]: value }));
   };
 
   const handleUnlock = (id) => {
     const friend = friends.find((f) => f.id === id);
-    const enteredPassword = enteredPasswords[id] || "";
-
-    if (enteredPassword.toLowerCase() === friend.password.toLowerCase()) {
+    if (!friend) return;
+    const enteredPassword = (enteredPasswords[id] || "").toString().toLowerCase();
+    if (enteredPassword === friend.password.toLowerCase()) {
       setUnlockedFriend(messages[friend.password]);
       setEnteredPasswords((prev) => ({ ...prev, [id]: "" }));
     } else {
@@ -61,16 +81,19 @@ export default function BirthdaySecrets() {
     document.body.removeChild(link);
   };
 
+  // viewer area height: modal header ~120px + padding ~40px -> viewer gets rest of 90vh
+  const viewerHeight = "calc(90vh - 160px)";
+
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center bg-[#f9f5f0] overflow-y-auto p-4 sm:p-6">
-      {/* Boho Blobs */}
+    <div className="relative min-h-screen flex flex-col items-center bg-[#f9f5f0] p-4 sm:p-6 overflow-hidden">
+      {/* Background blobs (absolutely positioned — keep overflow-x-hidden on root) */}
       <motion.div
-        className="absolute top-[-120px] left-[-120px] w-[22rem] sm:w-[30rem] h-[22rem] sm:h-[30rem] bg-gradient-to-br from-[#f6d6ad] to-[#f4b6c2] opacity-40 rounded-full blur-3xl"
+        className="pointer-events-none absolute top-[-120px] left-[-120px] w-[22rem] sm:w-[30rem] h-[22rem] sm:h-[30rem] bg-gradient-to-br from-[#f6d6ad] to-[#f4b6c2] opacity-40 rounded-full blur-3xl"
         animate={{ x: [0, 20, 0], y: [0, 15, 0], rotate: [0, 3, -3, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-[-120px] right-[-120px] w-[24rem] sm:w-[32rem] h-[24rem] sm:h-[32rem] bg-gradient-to-tr from-[#b4c6a6] to-[#f0d9b5] opacity-40 rounded-full blur-3xl"
+        className="pointer-events-none absolute bottom-[-120px] right-[-120px] w-[24rem] sm:w-[32rem] h-[24rem] sm:h-[32rem] bg-gradient-to-tr from-[#b4c6a6] to-[#f0d9b5] opacity-40 rounded-full blur-3xl"
         animate={{ x: [0, -25, 0], y: [0, -20, 0], rotate: [0, -3, 3, 0] }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -78,120 +101,129 @@ export default function BirthdaySecrets() {
       {/* Tulip */}
       <motion.img
         src="/images/tulip.png"
-        alt="Tulip Letter"
+        alt="Tulip"
         className="absolute top-4 left-4 w-24 sm:w-40 md:w-56"
         animate={{ rotate: [0, 3, -3, 0], scale: [1, 1.03, 1, 1.03] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* Title */}
-      <h2 className="text-3xl sm:text-5xl font-shifty text-[#705c53] mb-2 text-center z-10">
-        Happy Birthday Rishika 🎉
-      </h2>
-      <h4 className="text-base sm:text-xl font-shifty mb-8 tracking-wide text-center z-10 px-2">
-        Solve the Little Riddle and Unveil a Sweet Note!
-      </h4>
+      {/* Header */}
+      <div className="w-full max-w-6xl mx-auto z-10">
+        <h2 className="text-3xl sm:text-5xl font-shifty text-[#705c53] mb-2 text-center">Happy Birthday Rishika 🎉</h2>
+        <h4 className="text-base sm:text-xl mb-8 tracking-wide text-center text-[#7a6563] px-2">Solve the Little Riddle and Unveil a Sweet Note!</h4>
 
-      {/* Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 z-10">
-        {friends.map((friend) => (
-          <motion.div
-            key={friend.id}
-            className="bg-[#fffaf3] shadow-md rounded-2xl p-5 sm:p-6 w-64 sm:w-72 text-center border border-[#d6c2b5] hover:scale-105 transition-transform mx-auto"
-            whileHover={{ y: -5 }}
-          >
-            <h2 className="text-md sm:text-lg font-semibold mb-3 text-[#7a6563] font-serif">
-              {friend.name}
-            </h2>
-            <div className="relative">
-              <input
-                type={showPassword[friend.id] ? "text" : "password"}
-                placeholder="Enter password"
-                className="border border-[#d6c2b5] bg-[#fcf9f4] rounded-lg p-2 w-full text-center focus:outline-none focus:ring-2 focus:ring-[#d8a48f]"
-                value={enteredPasswords[friend.id] || ""}
-                onChange={(e) => handleChange(friend.id, e.target.value)}
-              />
-              <button
-                type="button"
-                onClick={() =>
-                  setShowPassword((prev) => ({
-                    ...prev,
-                    [friend.id]: !prev[friend.id],
-                  }))
-                }
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#b4846c] hover:text-[#8b6c5c]"
-              >
-                {showPassword[friend.id] ? <FaEyeSlash /> : <FaEye />}
-              </button>
-            </div>
-
-            <button
-              onClick={() => handleUnlock(friend.id)}
-              className="mt-4 bg-[#d8a48f] text-white rounded-lg px-5 py-2 hover:bg-[#c58d78] transition font-medium"
+        {/* GRID: center items and give each card a controlled max width to avoid horizontal overflow */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 justify-items-center">
+          {friends.map((friend) => (
+            <motion.div
+              key={friend.id}
+              className="bg-[#fffaf3] shadow-md rounded-2xl p-5 sm:p-6 w-full max-w-[20rem] text-center border border-[#d6c2b5] hover:scale-[1.03] transition-transform flex flex-col justify-between min-h-[220px]"
+              whileHover={{ y: -5 }}
             >
-              Unlock
-            </button>
-          </motion.div>
-        ))}
+              <h2 className="text-md sm:text-lg font-semibold mb-3 text-[#7a6563] font-serif leading-snug">
+                {friend.name}
+              </h2>
+
+              <div className="relative">
+                <input
+                  type={showPassword[friend.id] ? "text" : "password"}
+                  placeholder="Enter password"
+                  className="border border-[#d6c2b5] bg-[#fcf9f4] rounded-lg p-2 w-full text-center focus:outline-none focus:ring-2 focus:ring-[#d8a48f]"
+                  value={enteredPasswords[friend.id] || ""}
+                  onChange={(e) => handleChange(friend.id, e.target.value)}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => ({ ...prev, [friend.id]: !prev[friend.id] }))}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#b4846c] hover:text-[#8b6c5c]"
+                >
+                  {showPassword[friend.id] ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
+
+              <button
+                onClick={() => handleUnlock(friend.id)}
+                className="mt-4 bg-[#d8a48f] text-white rounded-lg px-5 py-2 hover:bg-[#c58d78] transition font-medium"
+              >
+                Unlock
+              </button>
+            </motion.div>
+          ))}
+        </div>
       </div>
 
       {/* Modal */}
       <AnimatePresence>
         {unlockedFriend && (
           <motion.div
+            key="modal-backdrop"
             className="fixed inset-0 bg-[#00000080] flex items-center justify-center z-50 p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="relative bg-[#fff9f4] shadow-2xl w-full max-w-md sm:max-w-3xl md:max-w-5xl overflow-y-auto max-h-[90vh] p-6 sm:p-10 flex flex-col items-center rounded-2xl"
-              initial={{ scale: 0.9 }}
+              key="modal"
+              className="relative bg-[#fff9f4] shadow-2xl w-full max-w-3xl md:max-w-5xl rounded-2xl overflow-hidden flex flex-col items-center"
+              initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
+              exit={{ scale: 0.95 }}
             >
+              {/* close button */}
               <button
                 onClick={() => setUnlockedFriend(null)}
-                className="absolute top-4 sm:top-6 right-4 sm:right-6 text-[#705c53] text-2xl font-bold"
+                className="absolute top-4 right-4 text-[#705c53] text-2xl font-bold z-30"
+                aria-label="close"
               >
                 <FaTimes />
               </button>
 
-              <h2 className="text-xl sm:text-4xl font-bold text-[#b4846c] mb-4 sm:mb-6 font-serif text-center">
-                {unlockedFriend.title}
-              </h2>
+              {/* title */}
+              <div className="w-full px-6 pt-6">
+                <h2 className="text-xl sm:text-3xl font-bold text-[#b4846c] mb-4 text-center font-serif">
+                  {unlockedFriend.title}
+                </h2>
+              </div>
 
-              {/* PDF / Image / Video Handling */}
-              {unlockedFriend.image.endsWith(".pdf") ? (
-                <div className="w-full h-[70vh] sm:h-[80vh] rounded-xl border border-[#e5d2c2] overflow-hidden">
-                  <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
-                    <Viewer fileUrl={unlockedFriend.image} />
-                  </Worker>
-                </div>
-              ) : unlockedFriend.image.endsWith(".mp4") ? (
-                <video
-                  controls
-                  className="rounded-xl mb-4 sm:mb-6 w-full max-h-[75vh] object-contain shadow-lg border border-[#e5d2c2]"
+              {/* viewer area: SINGLE scrollable region inside modal */}
+              <div style={{ height: viewerHeight }} className="w-full px-6 pb-6">
+                {unlockedFriend.image.endsWith(".pdf") ? (
+                  <div className="w-full h-full rounded-xl border border-[#e5d2c2] overflow-auto">
+                    <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
+                      <Viewer fileUrl={unlockedFriend.image} />
+                    </Worker>
+                  </div>
+                ) : unlockedFriend.image.endsWith(".mp4") ? (
+                  <div className="w-full h-full rounded-xl border border-[#e5d2c2] flex items-center justify-center overflow-hidden">
+                    <video
+                      controls
+                      style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                    >
+                      <source src={unlockedFriend.image} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                ) : (
+                  <div className="w-full h-full rounded-xl border border-[#e5d2c2] flex items-center justify-center overflow-auto">
+                    <img
+                      src={unlockedFriend.image}
+                      alt="Letter"
+                      style={{ maxHeight: "100%", width: "auto", display: "block" }}
+                      className="shadow-lg"
+                    />
+                  </div>
+                )}
+              </div>
+
+              {/* download button area */}
+              <div className="w-full px-6 pb-6 flex justify-center">
+                <button
+                  onClick={() => handleDownload(unlockedFriend.image)}
+                  className="flex items-center gap-2 bg-[#d8a48f] text-white px-5 py-2 rounded-lg hover:bg-[#c58d78] transition font-medium"
                 >
-                  <source src={unlockedFriend.image} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              ) : (
-                <img
-                  src={unlockedFriend.image}
-                  alt="Letter"
-                  className="rounded-xl mb-4 sm:mb-6 max-w-full max-h-[75vh] object-contain shadow-lg border border-[#e5d2c2]"
-                />
-              )}
-
-              {/* Download Button */}
-              <button
-                onClick={() => handleDownload(unlockedFriend.image)}
-                className="flex items-center mt-2 gap-2 bg-[#d8a48f] text-white px-5 py-2 rounded-lg hover:bg-[#c58d78] transition font-medium"
-              >
-                <FaDownload />
-                Download Letter
-              </button>
+                  <FaDownload /> Download
+                </button>
+              </div>
             </motion.div>
           </motion.div>
         )}
