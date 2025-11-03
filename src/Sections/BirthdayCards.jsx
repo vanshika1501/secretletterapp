@@ -1,16 +1,14 @@
 import '@react-pdf-viewer/core/lib/styles/index.css';
-import '@react-pdf-viewer/default-layout/lib/styles/index.css'; import React, { useState } from "react";
+import '@react-pdf-viewer/default-layout/lib/styles/index.css';
+import React, { useState } from "react";
 import { FaTimes, FaDownload, FaEye, FaEyeSlash } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { Worker, Viewer } from '@react-pdf-viewer/core';
-
-
 
 export default function BirthdaySecrets() {
   const [unlockedFriend, setUnlockedFriend] = useState(null);
   const [enteredPasswords, setEnteredPasswords] = useState({});
   const [showPassword, setShowPassword] = useState({});
-
 
   const friends = [
     { id: 1, name: "Starts with 8, ends with 9, opens the door to the new world where we have siblings to find.", password: "816274169" },
@@ -18,47 +16,24 @@ export default function BirthdaySecrets() {
     { id: 3, name: "Reshu tum mera kaunsa gaya hua gaana loop pe sunti ho?", password: "ande" },
     { id: 4, name: "I am the repetitive meeting place that always makes you grin, And the one place I hate where you constantly drag me in..Where am I?", password: "dainikbhaskarmall" },
     { id: 5, name: "Chhoti thi height, badi thi baat, Wahi se shuru hui dosti ki shuruaat♥️Bata kis class?", password: "5" },
-    { id: 6, name: "In a yellow dress you look like?", password: "butterfly" },
-    { id: 7, name: "The game where we met for the first time ", password: "avakin" },
+    { id: 6, name: "She’s known to tease, she loves to flirt, Her words can play and softly divert. If warmth had a face and mischief a name, Who else but her could claim such fame?", password: "rishika" },
+    { id: 7, name: "The game where we met for the first time", password: "avakin" },
     { id: 8, name: "I was your school friend..Guess my name?", password: "paras" },
-    { id: 9, name: "Khushi", password: "test" },
-    { id: 10, name: "Shivam", password: "test" },
-    { id: 11, name: "Jeeju bhaiya", password: "test" },
+    { id: 9, name: "In a yellow dress you look like?", password: "butterfly" },
+    { id: 10, name: "pwd = len(your_spirit_animal) + age_diff(Dishu,Khushi)", password: "11" },
   ];
 
   const messages = {
-    816274169: {
-      title: "From Stuti!",
-      image: "/images/stuti.pdf",
-    },
-    bholu: {
-      title: "From Dishu!",
-      image: "/images/dishu.pdf",
-    },
-    ande: {
-      title: "From Samina!",
-      image: "/images/samina.pdf",
-    },
-    dainikbhaskarmall: {
-      title: "From Jaya!",
-      image: "/images/jaya.png",
-    },
-      5: {
-      title: "From Sneha!",
-      image: "/images/sneha.jpg",
-    },
-    butterfly: {
-      title: "From Himanshu!",
-      image: "/images/himanshu.png",
-    },
-    avakin: {
-      title: "From Himalaya!",
-      image: "/images/himalaya.pdf",
-    },
-    paras: {
-      title: "From Paras!",
-      image: "/images/paras.jpg",
-    },
+    816274169: { title: "From Stuti!", image: "/images/stuti.pdf" },
+    bholu: { title: "From Dishu!", image: "/images/dishu.pdf" },
+    ande: { title: "From Samina!", image: "/images/samina.pdf" },
+    dainikbhaskarmall: { title: "From Jaya!", image: "/images/jaya.png" },
+    5: { title: "From Sneha!", image: "/images/sneha_u.jpg" },
+    butterfly: { title: "From Himanshu!", image: "/images/himanshu.png" },
+    avakin: { title: "From Himalaya!", image: "/images/himalaya.jpg" },
+    paras: { title: "From Paras!", image: "/images/paras.jpg" },
+    rishika: { title: "From Shreya!", image: "/images/shreya.mp4" },
+    11: { title: "From Shikhar!", image: "/images/shikhar.pdf" },
   };
 
   const handleChange = (id, value) => {
@@ -77,19 +52,18 @@ export default function BirthdaySecrets() {
     }
   };
 
-  // 🖼️ Download image function
   const handleDownload = (imageSrc) => {
     const link = document.createElement("a");
     link.href = imageSrc;
-    link.download = imageSrc.split("/").pop(); // file name
+    link.download = imageSrc.split("/").pop();
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center bg-[#f9f5f0] overflow-hidden p-4 sm:p-6">
-      {/* 🌿 Boho Blobs */}
+    <div className="relative min-h-screen flex flex-col items-center justify-center bg-[#f9f5f0] overflow-y-auto p-4 sm:p-6">
+      {/* Boho Blobs */}
       <motion.div
         className="absolute top-[-120px] left-[-120px] w-[22rem] sm:w-[30rem] h-[22rem] sm:h-[30rem] bg-gradient-to-br from-[#f6d6ad] to-[#f4b6c2] opacity-40 rounded-full blur-3xl"
         animate={{ x: [0, 20, 0], y: [0, 15, 0], rotate: [0, 3, -3, 0] }}
@@ -101,59 +75,55 @@ export default function BirthdaySecrets() {
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* 🌷 Tulip Image */}
+      {/* Tulip */}
       <motion.img
         src="/images/tulip.png"
         alt="Tulip Letter"
         className="absolute top-4 left-4 w-24 sm:w-40 md:w-56"
-        animate={{
-          rotate: [0, 3, -3, 0],
-          scale: [1, 1.03, 1, 1.03],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+        animate={{ rotate: [0, 3, -3, 0], scale: [1, 1.03, 1, 1.03] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* 🎂 Title */}
-      <h2 className="text-3xl sm:text-5xl font-shifty ml-4 text-[#705c53] mb-2 tracking-wide text-center z-10">
-        Happy Birthday Rishika
+      {/* Title */}
+      <h2 className="text-3xl sm:text-5xl font-shifty text-[#705c53] mb-2 text-center z-10">
+        Happy Birthday Rishika 🎉
       </h2>
-      <h4 className="text-base sm:text-xl font-shifty ml-4 mb-8 tracking-wide text-center z-10 px-2">
+      <h4 className="text-base sm:text-xl font-shifty mb-8 tracking-wide text-center z-10 px-2">
         Solve the Little Riddle and Unveil a Sweet Note!
       </h4>
 
-      {/* 📜 Cards Grid */}
+      {/* Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 z-10">
         {friends.map((friend) => (
           <motion.div
             key={friend.id}
-            className="bg-[#fffaf3] shadow-md rounded-2xl p-5 sm:p-6 w-64 sm:w-72 text-center border border-[#d6c2b5] cursor-pointer hover:scale-105 transition-transform mx-auto"
+            className="bg-[#fffaf3] shadow-md rounded-2xl p-5 sm:p-6 w-64 sm:w-72 text-center border border-[#d6c2b5] hover:scale-105 transition-transform mx-auto"
             whileHover={{ y: -5 }}
           >
             <h2 className="text-md sm:text-lg font-semibold mb-3 text-[#7a6563] font-serif">
               {friend.name}
             </h2>
             <div className="relative">
-  <input
-    type={showPassword[friend.id] ? "text" : "password"}
-    placeholder="Enter password"
-    className="border border-[#d6c2b5] bg-[#fcf9f4] rounded-lg p-2 w-full text-center focus:outline-none focus:ring-2 focus:ring-[#d8a48f]"
-    value={enteredPasswords[friend.id] || ""}
-    onChange={(e) => handleChange(friend.id, e.target.value)}
-  />
-  <button
-    type="button"
-    onClick={() =>
-      setShowPassword((prev) => ({ ...prev, [friend.id]: !prev[friend.id] }))
-    }
-    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#b4846c] hover:text-[#8b6c5c]"
-  >
-    {showPassword[friend.id] ? <FaEyeSlash /> : <FaEye />}
-  </button>
-</div>
+              <input
+                type={showPassword[friend.id] ? "text" : "password"}
+                placeholder="Enter password"
+                className="border border-[#d6c2b5] bg-[#fcf9f4] rounded-lg p-2 w-full text-center focus:outline-none focus:ring-2 focus:ring-[#d8a48f]"
+                value={enteredPasswords[friend.id] || ""}
+                onChange={(e) => handleChange(friend.id, e.target.value)}
+              />
+              <button
+                type="button"
+                onClick={() =>
+                  setShowPassword((prev) => ({
+                    ...prev,
+                    [friend.id]: !prev[friend.id],
+                  }))
+                }
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#b4846c] hover:text-[#8b6c5c]"
+              >
+                {showPassword[friend.id] ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
 
             <button
               onClick={() => handleUnlock(friend.id)}
@@ -165,7 +135,7 @@ export default function BirthdaySecrets() {
         ))}
       </div>
 
-      {/* 💌 Modal */}
+      {/* Modal */}
       <AnimatePresence>
         {unlockedFriend && (
           <motion.div
@@ -175,7 +145,7 @@ export default function BirthdaySecrets() {
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="relative bg-[#fff9f4] shadow-2xl w-full max-w-md sm:max-w-3xl md:max-w-5xl overflow-y-auto p-6 sm:p-10 flex flex-col items-center rounded-2xl"
+              className="relative bg-[#fff9f4] shadow-2xl w-full max-w-md sm:max-w-3xl md:max-w-5xl overflow-y-auto max-h-[90vh] p-6 sm:p-10 flex flex-col items-center rounded-2xl"
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
@@ -187,26 +157,34 @@ export default function BirthdaySecrets() {
                 <FaTimes />
               </button>
 
-              <h2 className="text-xl sm:text-4xl font-bold  text-[#b4846c] mb-4 sm:mb-6 font-serif text-center">
+              <h2 className="text-xl sm:text-4xl font-bold text-[#b4846c] mb-4 sm:mb-6 font-serif text-center">
                 {unlockedFriend.title}
               </h2>
 
+              {/* PDF / Image / Video Handling */}
               {unlockedFriend.image.endsWith(".pdf") ? (
                 <div className="w-full h-[70vh] sm:h-[80vh] rounded-xl border border-[#e5d2c2] overflow-hidden">
                   <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
                     <Viewer fileUrl={unlockedFriend.image} />
                   </Worker>
                 </div>
+              ) : unlockedFriend.image.endsWith(".mp4") ? (
+                <video
+                  controls
+                  className="rounded-xl mb-4 sm:mb-6 w-full max-h-[75vh] object-contain shadow-lg border border-[#e5d2c2]"
+                >
+                  <source src={unlockedFriend.image} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               ) : (
                 <img
                   src={unlockedFriend.image}
                   alt="Letter"
-                  className="rounded-xl mb-4 sm:mb-6 max-w-full max-h-[70vh] sm:max-h-[80vh] object-contain shadow-lg border border-[#e5d2c2]"
+                  className="rounded-xl mb-4 sm:mb-6 max-w-full max-h-[75vh] object-contain shadow-lg border border-[#e5d2c2]"
                 />
               )}
 
-
-              {/* ⬇️ Download Button */}
+              {/* Download Button */}
               <button
                 onClick={() => handleDownload(unlockedFriend.image)}
                 className="flex items-center mt-2 gap-2 bg-[#d8a48f] text-white px-5 py-2 rounded-lg hover:bg-[#c58d78] transition font-medium"
