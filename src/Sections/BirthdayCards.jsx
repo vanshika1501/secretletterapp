@@ -18,10 +18,12 @@ export default function BirthdaySecrets() {
     { id: 4, name: "I am the repetitive meeting place that always makes you grin, And the one place I hate where you constantly drag me in..Where am I?", password: "dainikbhaskarmall" },
     { id: 5, name: "Chhoti thi height, badi thi baat, Wahi se shuru hui dosti ki shuruaat♥️Bata kis class?", password: "5" },
     { id: 6, name: "She’s known to tease, she loves to flirt, Her words can play and softly divert. If warmth had a face and mischief a name, Who else but her could claim such fame?", password: "rishika" },
-    { id: 7, name: "The game where we met for the first time", password: "avakin" },
-    { id: 8, name: "I was your school friend..Guess my name?", password: "paras" },
+    { id: 7, name: "After shopping, what did we eat in DB mall during my stay in Bhopal? :D", password: "sushi" },
+    { id: 8, name: "The game where we met for the first time", password: "avakin" },
     { id: 9, name: "In a yellow dress you look like?", password: "butterfly" },
-    { id: 10, name: "I start with an alphabet, add a place where animals live too,mix logic and love, and you will get who + len(age_diff(you,khushi)?", password: "gzoo6" },
+    { id: 10, name: "I was your school friend..Guess my name?", password: "paras" },
+    { id: 11, name: "My name is exactly same as the top of the mountain..Who am I?", password: "shikhar" },
+    { id: 12, name: " I live in the same city as you do..Who am I?", password: "shivam" },
   ];
 
   const messages = {
@@ -34,7 +36,9 @@ export default function BirthdaySecrets() {
     avakin: { title: "From Himalaya!", image: "/images/himalaya.jpg" },
     paras: { title: "From Paras!", image: "/images/paras.jpg" },
     rishika: { title: "From Shreya!", image: "/images/shreya.mp4" },
-    gzoo6: { title: "From Shikhar!", image: "/images/shikhar.pdf" },
+    shikhar: { title: "From Shikhar!", image: "/images/shikhar.pdf" },
+    sushi :{ title: "From Khushi!", image: "/images/khushi.pdf" },
+    shivam: { title: "From Shivam!", image: "/images/shivam.pdf" }, 
   };
 
   // --- side-effect: lock body scroll when modal open (prevent background scrollbar) ---
